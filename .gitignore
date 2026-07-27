@@ -1,0 +1,12 @@
+node_modules/
+dist/
+output/
+qa-juan/
+.claude/
+.vercel/
+
+.env
+.env.*
+!.env.example
+
+*.log
