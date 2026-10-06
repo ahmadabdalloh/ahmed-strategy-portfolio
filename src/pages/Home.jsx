@@ -1,10 +1,16 @@
 import { Link } from 'react-router-dom'
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import Reveal from '../components/Reveal.jsx'
 import MaskedTitle from '../components/MaskedTitle.jsx'
 import Marquee from '../components/Marquee.jsx'
-import { site, whatsappUrl, proofStats, reels, about } from '../data/site.js'
+import { site, whatsappUrl, proofStats, reels, about, featuredSlugs } from '../data/site.js'
 import { projects } from '../data/projects.js'
+
+/** Covers ship at 640/960/1600 so phones don't download a 1600px file. */
+const coverSrcSet = (cover) => {
+  const base = cover.replace(/\.webp$/, '')
+  return `${base}-640.webp 640w, ${base}-960.webp 960w, ${cover} 1600w`
+}
 
 function ReelPlayer({ reel, index }) {
   const [playing, setPlaying] = useState(false)
@@ -39,9 +45,10 @@ function ReelPlayer({ reel, index }) {
 }
 
 export default function Home() {
-  useEffect(() => {
-    document.title = `${site.name} | ${site.role}`
-  }, [])
+  const featured = featuredSlugs
+    .map((slug) => projects.find((p) => p.slug === slug))
+    .filter(Boolean)
+  const rest = projects.filter((p) => !featuredSlugs.includes(p.slug))
 
   return (
     <>
@@ -76,6 +83,14 @@ export default function Home() {
                   Get in touch
                 </a>
               </div>
+            </Reveal>
+            <Reveal delay={0.26}>
+              <p className="hero-cv">
+                <a href={site.cv} download>
+                  Download my CV <span aria-hidden="true">↓</span>
+                </a>
+                <span className="hero-cv-note">PDF · one page of results, projects and tools</span>
+              </p>
             </Reveal>
             <Reveal delay={0.3}>
               <p className="hero-cred">{site.credibility}</p>
@@ -130,15 +145,53 @@ export default function Home() {
               </div>
             </Reveal>
           </div>
-          <div className="work-grid">
-            {projects.map((pr, i) => (
-              <Reveal key={pr.slug} delay={(i % 2) * 0.08}>
-                <Link className="project-card" to={`/work/${pr.slug}`}>
+          {/* three featured, then the rest — so nobody has to choose from ten */}
+          <div className="work-featured">
+            {featured.map((pr, i) => (
+              <Reveal key={pr.slug} delay={i * 0.06}>
+                <Link className="project-card project-card--featured" to={`/work/${pr.slug}`}>
                   <div className="pc-media">
                     <img
                       src={pr.cover}
+                      srcSet={coverSrcSet(pr.cover)}
+                      sizes="(min-width: 980px) 620px, 100vw"
                       alt={pr.coverAlt}
-                      loading={i < 2 ? 'eager' : 'lazy'}
+                      loading={i === 0 ? 'eager' : 'lazy'}
+                      fetchpriority={i === 0 ? 'high' : undefined}
+                      width="1600" height="900"
+                    />
+                  </div>
+                  <div className="pc-body">
+                    <div className="pc-meta">
+                      <span className="tag">{pr.category}</span>
+                      <span>{pr.lang}</span>
+                    </div>
+                    <h3 className="pc-title">{pr.client}: {pr.title}</h3>
+                    <p className="pc-sum">{pr.summary}</p>
+                    <span className="pc-link">Read the case study <span className="arr" aria-hidden="true">→</span></span>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+
+          <Reveal>
+            <p className="work-divider">
+              <span>The other seven systems</span>
+            </p>
+          </Reveal>
+
+          <div className="work-grid">
+            {rest.map((pr, i) => (
+              <Reveal key={pr.slug} delay={(i % 2) * 0.06}>
+                <Link className="project-card project-card--compact" to={`/work/${pr.slug}`}>
+                  <div className="pc-media">
+                    <img
+                      src={pr.cover}
+                      srcSet={coverSrcSet(pr.cover)}
+                      sizes="(min-width: 780px) 540px, 100vw"
+                      alt={pr.coverAlt}
+                      loading="lazy"
                       width="1600" height="900"
                     />
                   </div>
@@ -205,6 +258,41 @@ export default function Home() {
                   height="983"
                 />
                 <span className="paid-proof-badge">Campaign snapshot · 21 Jul 2026</span>
+              </div>
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
+      {/* ---------- AI VIDEO SHOWCASE ---------- */}
+      <section className="section ai-home-section" aria-labelledby="ai-home-title">
+        <div className="wrap">
+          <Reveal>
+            <Link className="ai-home-card" to="/ai-videos">
+              <div className="ai-home-media">
+                <img
+                  src="/work/ai-videos/ai-video-showcase-og.webp"
+                  alt="Al Mahy legal explainer thumbnail about personal status judgment enforcement"
+                  loading="lazy"
+                  width="1200"
+                  height="630"
+                />
+                <span className="ai-home-play" aria-hidden="true">▶</span>
+                <span className="ai-home-tool">Created with Higgsfield</span>
+              </div>
+              <div className="ai-home-copy">
+                <p className="eyebrow">New · AI video showcase</p>
+                <h2 id="ai-home-title">Five legal explainers, built as one visual system.</h2>
+                <p>
+                  See how I used Higgsfield to turn complex legal subjects into clear,
+                  bilingual videos designed for vertical social viewing.
+                </p>
+                <div className="ai-home-facts" aria-label="AI video showcase details">
+                  <span><strong>5</strong> finished videos</span>
+                  <span><strong>9:16</strong> mobile-first</span>
+                  <span><strong>AR + EN</strong> delivery</span>
+                </div>
+                <span className="ai-home-link">Watch the AI video showcase <span aria-hidden="true">→</span></span>
               </div>
             </Link>
           </Reveal>
@@ -284,7 +372,7 @@ export default function Home() {
         <div className="wrap">
           <Reveal>
             <div className="contact">
-              <p className="eyebrow" style={{ color: 'var(--accent)' }}>Contact</p>
+              <p className="eyebrow" style={{ color: 'var(--accent-on-dark)' }}>Contact</p>
               <h2 id="contact-title">Have a brand that needs a system, not just posts?</h2>
               <p>
                 I take on freelance strategy projects and full-time roles. Tell me about the brand,
@@ -292,9 +380,11 @@ export default function Home() {
               </p>
               <div className="contact-actions">
                 <a className="btn btn-primary" href={`mailto:${site.email}`}>Email me</a>
-                <a className="btn btn-ghost" style={{ color: 'var(--on-dark)', boxShadow: 'inset 0 0 0 1.5px #454034' }}
-                  href={site.linkedin} target="_blank" rel="noreferrer">
+                <a className="btn btn-outline-light" href={site.linkedin} target="_blank" rel="noreferrer">
                   Connect on LinkedIn
+                </a>
+                <a className="btn btn-outline-light" href={site.cv} download>
+                  Download CV <span aria-hidden="true">↓</span>
                 </a>
               </div>
               <div className="contact-alt">

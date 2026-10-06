@@ -1,10 +1,10 @@
-import { useParams, Link, Navigate, useLocation } from 'react-router-dom'
+import { useParams, Link, useLocation } from 'react-router-dom'
 import { useEffect } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import Reveal from '../components/Reveal.jsx'
 import ScrollProgress from '../components/ScrollProgress.jsx'
+import NotFound from './NotFound.jsx'
 import { projects, getProject } from '../data/projects.js'
-import { site } from '../data/site.js'
 
 const clipVariants = {
   hidden: { clipPath: 'inset(0% 0% 100% 0%)' },
@@ -98,10 +98,6 @@ export default function CaseStudy() {
   const reduce = useReducedMotion()
 
   useEffect(() => {
-    if (pr) document.title = `${pr.client}: ${pr.title} | ${site.name}`
-  }, [pr])
-
-  useEffect(() => {
     if (!pr || !hash) return undefined
     const timer = window.setTimeout(() => {
       const target = document.getElementById(hash.slice(1))
@@ -110,7 +106,7 @@ export default function CaseStudy() {
     return () => window.clearTimeout(timer)
   }, [hash, pr, reduce])
 
-  if (!pr) return <Navigate to="/" replace />
+  if (!pr) return <NotFound />
 
   const idx = projects.findIndex((x) => x.slug === slug)
   const prev = projects[(idx - 1 + projects.length) % projects.length]

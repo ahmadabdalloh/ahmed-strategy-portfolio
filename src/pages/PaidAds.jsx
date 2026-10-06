@@ -9,7 +9,7 @@ import {
   paidAccountCampaignCount,
   paidAccounts,
 } from '../data/paidAccounts.js'
-import { site, whatsappUrl } from '../data/site.js'
+import { whatsappUrl } from '../data/site.js'
 
 function ArrowIcon() {
   return (
@@ -283,10 +283,6 @@ export default function PaidAds() {
     { leads: 0, spend: 0 },
   )
   const campaignSnapshotCount = paidCampaigns.length + paidAccountCampaignCount
-
-  useEffect(() => {
-    document.title = `Paid Ads Results | ${site.name}`
-  }, [])
 
   return (
     <article className="paid-page">

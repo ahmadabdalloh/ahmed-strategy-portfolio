@@ -10,42 +10,78 @@
       this.appendChild(this.canvas);
       this.ctx = this.canvas.getContext('2d');
       this.mouse = { x: 0.5, y: 0.5 };
+
+      this.reduceQuery = matchMedia('(prefers-reduced-motion: reduce)');
+      this.onMotionPref = () => this.restart();
+      this.reduceQuery.addEventListener('change', this.onMotionPref);
+
+      // Pointer parallax only where there is a real pointer, and never
+      // on the main thread's critical path.
+      this.hasPointer = matchMedia('(hover: hover) and (pointer: fine)').matches;
       this.onMove = (e) => {
         this.mouse.x = e.clientX / innerWidth;
         this.mouse.y = e.clientY / innerHeight;
       };
-      addEventListener('mousemove', this.onMove);
+      if (this.hasPointer) addEventListener('mousemove', this.onMove, { passive: true });
+
+      // Stop burning frames while the tab is in the background.
+      this.onVisibility = () => {
+        if (document.hidden) this.stop();
+        else this.start();
+      };
+      document.addEventListener('visibilitychange', this.onVisibility);
+
       this.ro = new ResizeObserver(() => this.resize());
       this.ro.observe(this);
       this.resize();
       this.t = 0;
-      this.raf = requestAnimationFrame((ts) => this.tick(ts));
+      this.start();
     }
     disconnectedCallback() {
-      cancelAnimationFrame(this.raf);
-      removeEventListener('mousemove', this.onMove);
+      this.stop();
+      if (this.hasPointer) removeEventListener('mousemove', this.onMove);
+      document.removeEventListener('visibilitychange', this.onVisibility);
+      this.reduceQuery.removeEventListener('change', this.onMotionPref);
       this.ro.disconnect();
     }
-    attributeChangedCallback() { this.nodes = null; }
+    get reduced() { return this.reduceQuery.matches; }
+    start() {
+      if (this.raf) return;
+      // Reduced motion: paint one static frame, then stop.
+      if (this.reduced) { this.draw(); return; }
+      const loop = () => { this.raf = requestAnimationFrame(loop); this.draw(); };
+      this.raf = requestAnimationFrame(loop);
+    }
+    stop() {
+      cancelAnimationFrame(this.raf);
+      this.raf = null;
+    }
+    restart() { this.stop(); this.start(); }
+    attributeChangedCallback() {
+      this.nodes = null;
+      if (this.ctx && this.reduced) this.draw();
+    }
     resize() {
       const dpr = Math.min(devicePixelRatio || 1, 2);
       this.w = this.clientWidth; this.h = this.clientHeight;
       this.canvas.width = this.w * dpr; this.canvas.height = this.h * dpr;
       this.ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
       this.nodes = null;
+      if (this.reduced) this.draw();
     }
     seed() {
       const density = parseFloat(this.getAttribute('density') || '1');
-      const n = Math.round((this.w * this.h) / 26000 * density);
+      // The link pass is O(n²), so the node count is capped rather than left
+      // to scale with viewport area (a 4K display used to seed ~330 nodes).
+      const n = Math.min(90, Math.round((this.w * this.h) / 26000 * density));
       this.nodes = Array.from({ length: n }, (_, i) => ({
         x: Math.random() * this.w, y: Math.random() * this.h,
         vx: (Math.random() - 0.5) * 0.22, vy: (Math.random() - 0.5) * 0.22,
         r: 1.4 + Math.random() * 1.8, p: Math.random() * Math.PI * 2,
       }));
     }
-    tick(ts) {
-      this.raf = requestAnimationFrame((t2) => this.tick(t2));
-      const speed = parseFloat(this.getAttribute('speed') || '1');
+    draw() {
+      const speed = this.reduced ? 0 : parseFloat(this.getAttribute('speed') || '1');
       const mode = this.getAttribute('mode') || 'both';
       const dark = (this.getAttribute('theme') || 'light') === 'dark';
       const ctx = this.ctx, w = this.w, h = this.h;
@@ -56,7 +92,8 @@
       ctx.clearRect(0, 0, w, h);
       const ink = dark ? '255,255,255' : '10,37,64';
       const blue = dark ? '91,155,255' : '31,111,235';
-      const px = (this.mouse.x - 0.5) * 24, py = (this.mouse.y - 0.5) * 16;
+      const par = this.reduced ? 0 : 1;
+      const px = (this.mouse.x - 0.5) * 24 * par, py = (this.mouse.y - 0.5) * 16 * par;
 
       if (mode !== 'network') { // helix ribbons drifting across
         for (let s = 0; s < 2; s++) {

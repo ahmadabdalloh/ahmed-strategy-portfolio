@@ -9,6 +9,7 @@ A web portfolio presenting my work across marketing strategy, content systems, m
 - Ten web-native marketing case studies across nine industries
 - Strategy decks and content calendars rebuilt for quick online reading
 - Paid ads evidence with campaign results and next-action commentary
+- AI-generated legal video showcase created with Higgsfield
 - Original campaign visuals, reels, research findings, and planning frameworks
 - Responsive layouts, accessible navigation, restrained motion, and optimized media
 

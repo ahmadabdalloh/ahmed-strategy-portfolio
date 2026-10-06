@@ -9,13 +9,19 @@ export const site = {
     'I turn research into clear strategy, content systems, and media plans that help brands earn attention and convert it into real business.',
   logo: '/logo.svg',
   credibility:
-    '8 brands across fitness, healthcare, education, coffee, jewelry & B2B · full-funnel work in Arabic and English',
+    '13 client brands across legal, coffee, healthcare, education, fitness, jewelry & B2B · full-funnel work in Arabic and English',
   email: 'Ahmed.Abdallah.BU@gmail.com',
   phone: '01118871492',
   whatsapp: '201118871492', // international format for wa.me links
   linkedin: 'https://www.linkedin.com/in/ahmedd-abdallah01',
   reelsFolder:
     'https://drive.google.com/drive/folders/1aH3I4ghfN1_E14jKSgXVIwz74h6jCwCJ',
+  cv: '/Ahmed-Abdallah-CV.pdf',
+  location: 'Heliopolis, Cairo, Egypt',
+  // Used for canonical URLs, sitemap.xml and absolute OG image paths.
+  // Change this one line if the domain changes.
+  url: 'https://ahmed-strategy-portfolio.vercel.app',
+  ogImage: '/og-cover.png',
 }
 
 export const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(
@@ -25,12 +31,16 @@ export const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${encodeURICompo
 // Stat strip on the home page. These are scope-of-work facts pulled
 // from the actual deliverables (not performance claims).
 export const proofStats = [
+  { value: '13', label: 'client brands taken from research through execution' },
   { value: '300+', label: 'post briefs written & art-directed' },
   { value: 'EGP 115K+', label: 'monthly media budgets modeled' },
-  { value: '9', label: 'industries: fitness, physio, healthcare, swim, early education, ed-tech, coffee, jewelry, B2B' },
+  { value: '11', label: 'industries across strategy, paid work and production: legal, coffee, healthcare, physio, swim, early education, ed-tech, activewear, jewelry, B2B fit-out, automotive' },
   { value: '90-day', label: 'roadmaps from research to scaling' },
   { value: 'AR + EN', label: 'bilingual strategy & copywriting' },
 ]
+
+// Homepage hierarchy: these three lead the work section as large cards.
+export const featuredSlugs = ['kavun-cafe', 'genio-academy', 'cloud9-nursery']
 
 // Short-form video work embedded from Google Drive.
 export const reels = [
@@ -97,6 +107,7 @@ export const about = {
       'Excel / spreadsheet systems',
       'PowerPoint / deck design',
       'CapCut / video editing',
+      'Higgsfield / AI video production',
     ],
   },
 }

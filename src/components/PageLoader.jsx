@@ -1,6 +1,12 @@
 import { useLayoutEffect, useRef, useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
+/* Route transition wipe. Kept deliberately short — the app is client-side,
+   so anything longer than this is invented waiting. */
+const DURATION_MS = 320
+const READY_MS = 40
+const EXIT_MS = 220
+
 export default function PageLoader() {
   const { pathname } = useLocation()
   const firstRoute = useRef(true)
@@ -13,13 +19,15 @@ export default function PageLoader() {
       firstRoute.current = false
       return undefined
     }
+    // Anyone who asked for less motion gets an instant route change.
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return undefined
 
     let cancelled = false
     let frame
     let readyTimer
     let exitTimer
     const startedAt = performance.now()
-    const duration = 1150
+    const duration = DURATION_MS
 
     setVisible(true)
     setLeaving(false)
@@ -38,8 +46,8 @@ export default function PageLoader() {
 
       readyTimer = window.setTimeout(() => {
         setLeaving(true)
-        exitTimer = window.setTimeout(() => setVisible(false), 480)
-      }, 220)
+        exitTimer = window.setTimeout(() => setVisible(false), EXIT_MS)
+      }, READY_MS)
     }
 
     frame = requestAnimationFrame(update)
