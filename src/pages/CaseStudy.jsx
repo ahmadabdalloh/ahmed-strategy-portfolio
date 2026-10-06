@@ -5,6 +5,7 @@ import Reveal from '../components/Reveal.jsx'
 import ScrollProgress from '../components/ScrollProgress.jsx'
 import NotFound from './NotFound.jsx'
 import { projects, getProject } from '../data/projects.js'
+import { contextFor } from '../data/projectContext.js'
 
 const clipVariants = {
   hidden: { clipPath: 'inset(0% 0% 100% 0%)' },
@@ -125,7 +126,7 @@ function DriveEmbed({ embed }) {
 
 function SectionMetrics({ metrics }) {
   return (
-    <div className="case-metric-grid" aria-label="Verified results">
+    <div className="case-metric-grid" aria-label="Section at a glance">
       {metrics.map((metric) => (
         <div key={metric.label}>
           <strong>{metric.value}</strong>
@@ -191,6 +192,11 @@ export default function CaseStudy() {
   const idx = projects.findIndex((x) => x.slug === slug)
   const prev = projects[(idx - 1 + projects.length) % projects.length]
   const next = projects[(idx + 1) % projects.length]
+  const context = contextFor(slug)
+  const priority = ['organic-results', 'production-operations', 'captured-reels', 'tour-funnel']
+  const sections = slug === 'cloud9-nursery'
+    ? [...priority.map((id) => pr.sections.find((section) => section.id === id)).filter(Boolean), ...pr.sections.filter((section) => !priority.includes(section.id))]
+    : pr.sections
 
   return (
     <article>
@@ -203,13 +209,15 @@ export default function CaseStudy() {
               <Link to="/#work">← All work</Link>
             </p>
             <p className="eyebrow">{pr.client}</p>
-            <h1 style={{ marginTop: 10, maxWidth: '18ch' }}>{pr.title}</h1>
+            <h1 style={{ marginTop: 10, maxWidth: '22ch' }}>{context.title}</h1>
             <p className="cs-kicker">
               <span>{pr.category}</span>
               <span className="dot">{pr.industry}</span>
               <span className="dot">{pr.lang}</span>
             </p>
             <p className="lede cs-summary" style={{ maxWidth: '68ch' }}>{pr.summary}</p>
+            <div className="case-context"><p className="project-status">{context.status} · {context.period}</p><p><strong>My role:</strong> {context.role}</p><p className="case-evidence-note"><strong>Evidence shown:</strong> {context.evidence}</p></div>
+            {slug === 'cloud9-nursery' && <nav className="case-jump" aria-label="Cloud9 case study sections"><a href="#organic-results">Results</a><a href="#production-operations">Production workflow</a><a href="#captured-reels">Captured Reels</a><a href="#tour-funnel">Booking website</a></nav>}
           </Reveal>
 
           <Reveal delay={0.1}>
@@ -243,7 +251,7 @@ export default function CaseStudy() {
       </header>
 
       {/* ---------- narrative sections ---------- */}
-      {pr.sections.map((sec) => {
+      {sections.map((sec) => {
         const videos = sec.videos ?? []
         const mediaCount = sec.images.length + videos.length
         const hasSupplemental = mediaCount > 0 || sec.metrics?.length || sec.workflow?.length || sec.tracker || sec.embeds?.length
@@ -289,18 +297,20 @@ export default function CaseStudy() {
             {sec.tracker && <Reveal><TrackerTable tracker={sec.tracker} /></Reveal>}
             {mediaCount > 0 && (
               <div className="fig-grid">
-                {sec.images.map((img, i) => (
+                {sec.images.slice(0, 2).map((img, i) => (
                   <Reveal key={img.src + i} delay={(i % 2) * 0.07}>
                     <Figure img={img} />
                   </Reveal>
                 ))}
-                {videos.map((video, i) => (
+                {videos.slice(0, 2).map((video, i) => (
                   <Reveal key={video.src + i} delay={((sec.images.length + i) % 2) * 0.07}>
                     <VideoFigure video={video} />
                   </Reveal>
                 ))}
               </div>
             )}
+            {videos.length > 2 && <details className="portfolio-details"><summary>View {videos.length - 2} more motion assets</summary><div className="fig-grid">{videos.slice(2).map((video) => <VideoFigure key={video.src} video={video} />)}</div></details>}
+            {sec.images.length > 2 && <details className="portfolio-details"><summary>View {sec.images.length - 2} more supporting images</summary><div className="fig-grid">{sec.images.slice(2).map((img) => <Figure key={img.src} img={img} />)}</div></details>}
             {sec.embeds?.length > 0 && (
               <div className="drive-proof-grid">
                 {sec.embeds.map((embed, index) => (
@@ -319,7 +329,7 @@ export default function CaseStudy() {
       <div className="wrap">
         <Reveal>
           <div className="cs-outcome">
-            <h2>What the client walked away with</h2>
+            <h2>What I delivered</h2>
             <p>{pr.outcome}</p>
           </div>
         </Reveal>

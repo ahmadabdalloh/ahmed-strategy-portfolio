@@ -9,7 +9,7 @@ const products = [
       'A warm, bilingual booking journey that turns social interest into a structured tour request and gives the admissions team a clear operational handoff.',
     image: '/work/digital-products/cloud9-tour-booking.webp',
     imageAlt: 'Cloud9 nursery tour booking website showing the bilingual hero and three-step visit journey',
-    role: 'Product strategy · UX writing · bilingual experience · front-end build',
+    role: 'AI-assisted development · UX writing · bilingual interface · workflow design',
     features: [
       'English and Arabic interface',
       'Three-step parent journey',
@@ -28,7 +28,7 @@ const products = [
       'A bilingual freight website that turns a complex service portfolio into a clear route from discovery to quote request or shipment update.',
     image: '/work/digital-products/inter-freight-cargo.webp',
     imageAlt: 'Inter Freight Cargo website hero showing a container port and the message Clarity in motion',
-    role: 'Information architecture · UX writing · bilingual content · front-end build',
+    role: 'AI-assisted development · information architecture · UX writing · bilingual content',
     features: [
       'Arabic and English experience',
       'Five connected service pages',
@@ -41,7 +41,7 @@ const products = [
   },
   {
     number: '03',
-    eyebrow: 'Healthcare · Internal operations',
+    eyebrow: 'Supporting project · Healthcare operations',
     title: 'ElRehab attendance system',
     summary:
       'A mobile-first attendance entry point for hospital staff, paired with a protected HR area and clear Arabic instructions for day-to-day adoption.',
@@ -55,7 +55,7 @@ const products = [
         alt: 'Protected ElRehab HR attendance login screen in Arabic',
       },
     ],
-    role: 'Workflow design · Arabic UX · mobile interface · front-end build',
+    role: 'AI-assisted development · workflow design · Arabic UX · mobile interface',
     features: [
       'Printable QR onboarding poster',
       'Mobile punch-in entry route',
@@ -110,7 +110,9 @@ export default function DigitalProducts() {
               <h2 id="digital-products-title">The product is the whole journey.</h2>
               <p>
                 I connect the public-facing experience with the operational step behind it:
-                a tour request, a freight enquiry, or an attendance action.
+                a tour request or a freight enquiry. The attendance project is a supporting
+                workflow example. Live interfaces demonstrate the build, not verified
+                conversion gains, adoption, or a security audit.
               </p>
             </div>
           </Reveal>

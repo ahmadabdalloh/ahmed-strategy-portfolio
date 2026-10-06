@@ -5,6 +5,7 @@ import MaskedTitle from '../components/MaskedTitle.jsx'
 import Marquee from '../components/Marquee.jsx'
 import { site, whatsappUrl, proofStats, reels, about, featuredSlugs } from '../data/site.js'
 import { projects } from '../data/projects.js'
+import { contextFor } from '../data/projectContext.js'
 
 /** Covers ship at 640/960/1600 so phones don't download a 1600px file. */
 const coverSrcSet = (cover) => {
@@ -63,8 +64,8 @@ export default function Home() {
             <MaskedTitle
               lines={[
                 `${site.name}.`,
-                'Marketing decisions',
-                <em key="em">that book revenue.</em>,
+                'Social media &',
+                <em key="em">content specialist.</em>,
               ]}
             />
             <Reveal delay={0.16}>
@@ -89,7 +90,7 @@ export default function Home() {
                 <a href={site.cv} download>
                   Download my CV <span aria-hidden="true">↓</span>
                 </a>
-                <span className="hero-cv-note">PDF · one page of results, projects and tools</span>
+                <span className="hero-cv-note">PDF · two pages of results, projects and tools</span>
               </p>
             </Reveal>
             <Reveal delay={0.3}>
@@ -107,10 +108,10 @@ export default function Home() {
                   <img src={projects[7].cover} alt="" width="1600" height="900" />
                 </span>
                 <span className="proof-sheet proof-sheet-front">
-                  <img src={projects[0].cover} alt="" width="1600" height="900" />
+                  <img src={featured[0].cover} alt="" width="1600" height="900" />
                 </span>
               </span>
-              <span className="proof-caption">Ten client systems I built from research through execution.</span>
+              <span className="proof-caption">Content production, campaign evidence, and strategy deliverables.</span>
             </a>
           </Reveal>
         </div>
@@ -137,10 +138,10 @@ export default function Home() {
             <Reveal><p className="eyebrow">Selected work</p></Reveal>
             <Reveal delay={0.06}>
               <div className="row">
-                <h2 id="work-title">Ten systems across nine industries. The same discipline every time.</h2>
+                <h2 id="work-title">Selected projects. Clear roles. Evidence you can review.</h2>
                 <p className="lede" style={{ maxWidth: '34ch', fontSize: '1rem' }}>
-                  In every case study, I show the objective, the strategy, the content system,
-                  and the decisions behind the budget.
+                  Start with Cloud9’s content production and results. Each project separates
+                  the work delivered from measured outcomes and proposed plans.
                 </p>
               </div>
             </Reveal>
@@ -166,7 +167,8 @@ export default function Home() {
                       <span className="tag">{pr.category}</span>
                       <span>{pr.lang}</span>
                     </div>
-                    <h3 className="pc-title">{pr.client}: {pr.title}</h3>
+                    <p className="project-status">{contextFor(pr.slug).status}</p>
+                    <h3 className="pc-title">{pr.client}: {contextFor(pr.slug).title}</h3>
                     <p className="pc-sum">{pr.summary}</p>
                     <span className="pc-link">Read the case study <span className="arr" aria-hidden="true">→</span></span>
                   </div>
@@ -177,11 +179,11 @@ export default function Home() {
 
           <Reveal>
             <p className="work-divider">
-              <span>The other seven systems</span>
+              <span>More strategy and content projects</span>
             </p>
           </Reveal>
 
-          <div className="work-grid">
+          <details className="portfolio-details"><summary>Browse {rest.length} more projects</summary><div className="work-grid">
             {rest.map((pr, i) => (
               <Reveal key={pr.slug} delay={(i % 2) * 0.06}>
                 <Link className="project-card project-card--compact" to={`/work/${pr.slug}`}>
@@ -200,19 +202,20 @@ export default function Home() {
                       <span className="tag">{pr.category}</span>
                       <span>{pr.lang}</span>
                     </div>
-                    <h3 className="pc-title">{pr.client}: {pr.title}</h3>
+                    <p className="project-status">{contextFor(pr.slug).status}</p>
+                    <h3 className="pc-title">{pr.client}: {contextFor(pr.slug).title}</h3>
                     <p className="pc-sum">{pr.summary}</p>
                     <span className="pc-link">Read the case study <span className="arr" aria-hidden="true">→</span></span>
                   </div>
                 </Link>
               </Reveal>
             ))}
-          </div>
+          </div></details>
         </div>
       </section>
 
       {/* ---------- PROOF ---------- */}
-      <section className="section" aria-label="Scope of work at a glance" style={{ paddingTop: 0 }}>
+      <section className="section" aria-label="Selected results with reporting context" style={{ paddingTop: 0 }}>
         <div className="wrap">
           <Reveal>
             <div className="stats">
@@ -242,8 +245,8 @@ export default function Home() {
                 </p>
                 <div className="paid-proof-metrics" aria-label="Paid advertising evidence library">
                   <span><strong>3</strong> client accounts</span>
-                  <span><strong>16</strong> campaign snapshots</span>
-                  <span><strong>29</strong> proof screenshots</span>
+                  <span><strong>45</strong> Genio Meta leads</span>
+                  <span><strong>EGP 8.56</strong> cost per lead</span>
                 </div>
                 <span className="paid-proof-cta">
                   Explore all paid ad results <span aria-hidden="true">→</span>
@@ -261,6 +264,17 @@ export default function Home() {
               </div>
             </Link>
           </Reveal>
+        </div>
+      </section>
+
+      {/* ---------- REELS ---------- */}
+      <section className="section" id="reels" aria-labelledby="reels-title">
+        <div className="wrap">
+          <div className="section-head">
+            <Reveal><p className="eyebrow">Short-form production</p></Reveal>
+            <Reveal><div className="row"><h2 id="reels-title">From the brief to the finished Reel.</h2><a href={site.reelsFolder} target="_blank" rel="noreferrer">Open the full Reels folder →</a></div></Reveal>
+          </div>
+          <div className="reels-grid">{reels.map((r, i) => <Reveal key={r.id} delay={i * 0.08}><div className="reel"><ReelPlayer reel={r} index={i} /><div className="reel-body"><h3>{r.title}</h3><p>{r.note}</p></div></div></Reveal>)}</div>
         </div>
       </section>
 
@@ -300,6 +314,12 @@ export default function Home() {
       </section>
 
       {/* ---------- DIGITAL PRODUCTS ---------- */}
+      <section className="section" aria-labelledby="design-home-title"><div className="wrap">
+        <Link className="design-home-card" to="/ai-designs">
+          <img src="/work/ai-designs/fateh/fateh-poster-1-thumb.webp" alt="AI-assisted Al Fateh campaign using an iceberg visual metaphor" width="1080" height="1080" loading="lazy" />
+          <div><p className="eyebrow">AI-assisted design</p><h2 id="design-home-title">Social creative for Al Mahy and Al Fateh.</h2><p>Browse selected artwork and the complete 57-design collection, organized by service. Creative samples—not performance claims.</p><span className="pc-link">Explore the AI designs →</span></div>
+        </Link>
+      </div></section>
       <section className="section digital-home-section" aria-labelledby="digital-home-title">
         <div className="wrap">
           <Reveal>
@@ -328,46 +348,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ---------- REELS ---------- */}
-      <section className="section" id="reels" aria-labelledby="reels-title" style={{ paddingTop: 0 }}>
-        <div className="wrap">
-          <div className="section-head">
-            <Reveal><p className="eyebrow">Short-form production</p></Reveal>
-            <Reveal delay={0.06}>
-              <div className="row">
-                <h2 id="reels-title">Strategy on paper, proof on camera.</h2>
-                <a href={site.reelsFolder} target="_blank" rel="noreferrer" style={{ fontWeight: 620 }}>
-                  Open the full reels folder →
-                </a>
-              </div>
-            </Reveal>
-          </div>
-          <div className="reels-grid">
-            {reels.map((r, i) => (
-              <Reveal key={r.id} delay={i * 0.08}>
-                <div className="reel">
-                  <ReelPlayer reel={r} index={i} />
-                  <div className="reel-body">
-                    <h3>{r.title}</h3>
-                    <p>{r.note}</p>
-                  </div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* ---------- ABOUT ---------- */}
       <section className="section section-glass" id="about" aria-labelledby="about-title">
         <div className="wrap">
           <div className="section-head">
             <Reveal><p className="eyebrow">About</p></Reveal>
-            <Reveal delay={0.06}><h2 id="about-title">Attention is cheap. Trust is the asset.</h2></Reveal>
+            <Reveal delay={0.06}><h2 id="about-title">From the first brief to the final edit.</h2></Reveal>
           </div>
           <div className="about-grid">
             <Reveal className="about-bio">
               {about.bio.map((par) => <p key={par.slice(0, 24)}>{par}</p>)}
+              <div className="experience-card"><p className="eyebrow">Current experience</p><h3>Marketing Intern in Content and Social Media</h3><p><strong>4mind · Cairo · 2026–Present</strong></p><p>Content research, creative briefs, on-site capture, and Reel editing. Produce 8–10 social posts per week across Facebook, Instagram, TikTok, LinkedIn, and WhatsApp Channel against weekly targets.</p></div>
             </Reveal>
             <Reveal delay={0.1}>
               <div className="process">

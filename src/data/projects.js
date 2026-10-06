@@ -19,7 +19,7 @@ export const projects = [
     lang: 'English + Arabic',
     title: 'Two neighborhoods. One measurable growth system.',
     summary:
-      'A 90-day café growth system connecting two-branch strategy, production-ready content, a 30-day surreal campaign, and a bilingual digital menu I vibe-coded and deployed.',
+      'A café strategy and content package connecting two-branch planning, a monthly creative campaign, and a live bilingual menu built with AI-assisted development. Commercial outcomes are not reported here.',
     cover: '/covers/kavun-cafe-cover.webp',
     coverAlt:
       'KAVUN case study cover with the KAVUN monogram, a teal latte cup, and the headline Two neighborhoods, one measurable growth system',
@@ -187,7 +187,7 @@ export const projects = [
       },
       {
         heading: 'The strategy became a product: a bilingual digital menu',
-        body: 'I vibe-coded and deployed a responsive React/Vite menu that turns the content promise into a practical customer tool. The live experience makes 68 items searchable and filterable by category, switches fully between English and Arabic, supports favorites and dark mode, features best sellers and a seasonal pour, and gives customers direct exits to Google Maps and Instagram. On mobile, the interface becomes a compact bottom-navigation experience designed for a customer standing at the counter. It is not a desktop page squeezed onto a phone.',
+        body: 'I built and deployed the bilingual menu using AI-assisted development with React and Vite. I shaped the content, category structure, interface, and customer routes. The live site makes 68 items searchable and filterable, supports Arabic and English, favorites and dark mode, and links to Google Maps and Instagram. Its mobile layout includes bottom navigation for counter-side use. No sales uplift is claimed.',
         quote: {
           text: 'Think out of the cup.',
           source: 'KAVUN digital menu experience',
@@ -406,21 +406,21 @@ export const projects = [
       '16-slide 90-day social media growth strategy',
       '30 daily production briefs across six content pillars, five weeks, and three accounts',
       '26-page creative playbook for designers and editors',
-      '85-script bank, publishing calendar, KPI framework, final social covers, and three reusable motion assets',
+      '85-script bank, publishing calendar, KPI framework, final social covers, and a reusable motion kit',
       'Monthly organic-performance reporting, September and October production trackers, captured Reels, and a bilingual nursery tour funnel',
     ],
     tools: ['Instagram', 'Facebook', 'TikTok', 'LinkedIn', 'Meta Business Suite', 'Excel', 'Creative direction', 'Video editing', 'React', 'Microsoft Forms'],
     stats: [
       { value: '146,883', label: 'Instagram views in the 60-day reporting window ending 5 Oct 2026' },
       { value: '+238', label: 'net followers added from 3–22 Aug with EGP 0 spent on ads' },
-      { value: '208', label: 'first-time parent messages in the August reporting window' },
+      { value: '208', label: 'first-time parent messages from 3–22 Aug 2026' },
       { value: '56', label: 'September assets tracked: 39 videos and 17 feed or carousel designs' },
       { value: '35', label: 'October video briefs planned across 11 content categories' },
     ],
     sections: [
       {
         heading: 'The problem was not consistency. It was distribution.',
-        body: 'Cloud9 had already done the hard part. The team had published 1,783 Instagram posts and built 6,745 Instagram followers plus 8,679 Facebook likes. But only 78 people had interacted with the Facebook page in the measured week. I treated that as an exchange-rate problem, not a discipline problem. The feed documented nursery life for parents who had already chosen Cloud9, but it rarely gave a new parent something useful enough to save, share, or talk about.',
+        body: 'Cloud9 had published 1,783 Instagram posts and built 6,745 Instagram followers plus 8,679 Facebook likes. Only 78 people had interacted with the Facebook page in the measured week. The challenge was reaching new parents, not simply posting more. I focused on useful parent education, educator-led videos, and a clearer enquiry route.',
         quote: {
           text: 'Social media is not the problem. Distribution is.',
           source: 'Core diagnosis, Cloud9 social media strategy',
@@ -440,7 +440,7 @@ export const projects = [
       },
       {
         heading: 'The strategy: teach, prove, and make the founder visible',
-        body: "The programme was Cloud9's strongest advantage: Mandarin, German, camera craft, geometry, swimming, and more. My strategy made that value visible through five moves. TikTok becomes the reach engine. The content shifts from documenting events to teaching parents. Founder Yara appears on camera twice a week. Enrichment becomes proof instead of a list of activities. Measurement moves from likes to non-follower reach, saves, shares, profile actions, and qualified enquiries. The monthly mix keeps the system balanced: 40% education, 30% proof, 20% culture, and 10% conversion.",
+        body: "The programme was Cloud9's strongest advantage: Mandarin, German, camera craft, geometry, swimming, and more. My proposed strategy used TikTok for discovery, educator-led explanations for parent education, and enrichment footage as proof. It recommended two founder appearances per week and a monthly mix of 40% education, 30% proof, 20% culture, and 10% conversion. These are planning rules; the executed content and dated platform results are documented separately above.",
         quote: {
           text: 'The programme is the one thing nobody can copy.',
           source: 'Strategic advantage, Cloud9 social media strategy',
@@ -465,7 +465,7 @@ export const projects = [
       },
       {
         heading: 'One month became a working content system',
-        body: 'I turned the strategy into 30 daily production briefs across six pillars, five weeks, and three accounts. The brand account makes the experience visible. Yara makes the thinking meaningful. LinkedIn makes the practice transferable. Every brief includes the bilingual hook, shot or layout, design treatment, edit direction, CTA, KPI, export format, and safeguarding note. The wider production rhythm keeps the team one week ahead, with 14 weekly posts made in two focused sessions.',
+        body: 'I prepared 30 daily production briefs across six pillars, five weeks, and three accounts. Every brief includes a bilingual hook, shot or layout, design treatment, edit direction, CTA, KPI, export format, and safeguarding note. The proposed rhythm was 14 weekly posts in two focused sessions with a one-week buffer—not a claim that every planned post was produced. Tracker snapshots above show recorded execution.',
         quote: {
           text: 'Specific ideas. Human proof. Safe execution.',
           source: '30-day visual reference system',
@@ -536,7 +536,7 @@ export const projects = [
         ],
         tracker: {
           title: 'September content production system',
-          note: 'Sanitised portfolio excerpt · live workbook contains owners and operational notes',
+          note: 'Sanitised source snapshot. Two published rows still record editing as “In progress”; those fields need reconciliation, not an assumed correction.',
           columns: ['Asset', 'Category', 'Filming', 'Editing', 'Approval', 'Publication'],
           rows: [
             ['Why We Do Not Teach Letters in Alphabetical Order', 'Opinion', 'Filmed', 'Edited', 'Approved', 'Published'],
@@ -546,10 +546,6 @@ export const projects = [
             ['Cloud9 Nursery', 'Conversion', 'Filmed', 'Edited', 'Approved', 'Published'],
           ],
         },
-        links: [
-          { label: 'View the scripting document', href: 'https://buc1-my.sharepoint.com/:w:/g/personal/gana_2024000179_buc_edu_eg/IQCiBooSIRxaSJg2cnxFcIcPAd-ETmndb5ykpTXIFNZsx6E?e=IO9fPN' },
-          { label: 'View the working content calendar', href: 'https://buc1-my.sharepoint.com/:x:/g/personal/gana_2024000179_buc_edu_eg/IQC_9T_cdkALRqgTCdqSO7QKAbrshzLPPe_6eUYJ7VnEIiE?e=Zhpoc5' },
-        ],
         images: [],
       },
       {
@@ -630,7 +626,7 @@ export const projects = [
       },
     ],
     outcome:
-      'Cloud9 now has a connected growth system: research and positioning, a 30-day content architecture, an 85-script bank, production trackers, on-site Reel capture, repeatable motion assets, monthly organic reporting, and a live bilingual tour funnel. The work generated verified organic reach, follower growth, interactions, and parent conversations with zero August ad spend, while the booking product gives that attention a measurable next action.',
+      'I delivered research, content plans, bilingual scripts, production tracking, on-site Reel capture and editing, motion assets, performance reporting, and a live tour-booking website. The 3–22 August report records follower growth, interactions, and first-time messages with EGP 0 ad spend in that window. Later reporting windows include paid views and are shown separately. Enrolments and revenue are not verified in this case.',
   },
 
   // ----------------------------------------------------------

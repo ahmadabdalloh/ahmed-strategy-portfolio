@@ -60,8 +60,9 @@ export default function AIVideos() {
             <h1>AI-generated.<br /><em>Human-directed.</em></h1>
             <p className="lede">{aiVideoSeries.summary}</p>
             <p className="ai-video-hero-note">
-              The goal was not to make the work look “AI”. It was to give every legal topic
-              a visual idea, a clear rhythm, and a consistent Al Mahy identity.
+              My contribution: AI-assisted video creation with Higgsfield and visual direction
+              for this series. These are creative samples; publication, campaign results,
+              legal review, and separate script or voiceover authorship are not verified here.
             </p>
             <div className="ai-video-hero-actions">
               <a className="btn btn-primary" href="#showcase">Watch the showcase</a>

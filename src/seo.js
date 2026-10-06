@@ -6,11 +6,13 @@
 // ============================================================
 import { site } from './data/site.js'
 import { projects } from './data/projects.js'
+import { contextFor } from './data/projectContext.js'
 
 export const routes = [
   '/',
   '/paid-ads',
   '/ai-videos',
+  '/ai-designs',
   '/digital-products',
   ...projects.map((p) => `/work/${p.slug}`),
 ]
@@ -18,7 +20,7 @@ export const routes = [
 const HOME = {
   title: `${site.name} — ${site.role}`,
   description:
-    'Content & Growth Strategist. Marketing strategy, content systems, and paid media plans for fitness, healthcare, education, coffee and B2B brands — in Arabic and English.',
+    'Social media and content specialist in Cairo: bilingual scripts, on-site filming, Reel editing, organic reporting, Meta campaigns, and AI-assisted creative work.',
   image: site.ogImage,
   type: 'website',
 }
@@ -61,6 +63,7 @@ export function metaForPath(pathname = '/') {
   if (path === '/') return { ...HOME, canonical: site.url + '/' }
   if (path === '/paid-ads') return { ...PAID, canonical: `${site.url}/paid-ads` }
   if (path === '/ai-videos') return { ...AI_VIDEOS, canonical: `${site.url}/ai-videos` }
+  if (path === '/ai-designs') return { title: `AI Design Showcase — ${site.name}`, description: '57 AI-assisted social designs for Al Mahy and Al Fateh, grouped by legal, corporate, debt collection, notary, and accounting services.', image: '/work/ai-designs/fateh/fateh-poster-1.webp', type: 'website', canonical: `${site.url}/ai-designs` }
   if (path === '/digital-products') return { ...DIGITAL_PRODUCTS, canonical: `${site.url}/digital-products` }
 
   const match = path.match(/^\/work\/([^/]+)$/)
@@ -68,7 +71,7 @@ export function metaForPath(pathname = '/') {
     const pr = projects.find((p) => p.slug === match[1])
     if (pr) {
       return {
-        title: `${pr.client}: ${pr.title} — ${site.name}`,
+        title: `${pr.client}: ${contextFor(pr.slug).title} — ${site.name}`,
         description: pr.summary,
         image: pr.cover,
         type: 'article',

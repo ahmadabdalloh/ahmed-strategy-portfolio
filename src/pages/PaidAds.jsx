@@ -130,7 +130,7 @@ function AccountCampaign({ campaign, index, onOpen }) {
           </div>
         </dl>
         <div className="account-campaign-decision">
-          <span>My next action</span>
+          <span>Recommended next action</span>
           <p>{campaign.decision}</p>
         </div>
       </div>
@@ -143,6 +143,8 @@ function AccountCampaign({ campaign, index, onOpen }) {
 }
 
 function PaidAccount({ account, index, onOpen }) {
+  const selected = account.campaigns.filter((campaign) => account.slug === 'greener' ? campaign.result === 342 || campaign.title === 'Hiring campaign' : campaign.result === 419)
+  const archive = account.campaigns.filter((campaign) => !selected.includes(campaign))
   return (
     <article className="paid-account" id={account.slug}>
       <Reveal>
@@ -179,12 +181,14 @@ function PaidAccount({ account, index, onOpen }) {
       </Reveal>
 
       <div className="account-campaign-list">
-        {account.campaigns.map((campaign, campaignIndex) => (
+        {selected.map((campaign, campaignIndex) => (
           <Reveal key={campaign.title} delay={(campaignIndex % 2) * 0.04}>
             <AccountCampaign campaign={campaign} index={campaignIndex} onOpen={onOpen} />
           </Reveal>
         ))}
       </div>
+
+      <details className="portfolio-details"><summary>Browse {archive.length} additional campaign snapshots</summary><div className="account-campaign-list">{archive.map((campaign, campaignIndex) => <AccountCampaign key={campaign.title} campaign={campaign} index={campaignIndex + selected.length} onOpen={onOpen} />)}</div></details>
 
       <Reveal>
         <details className="breakdown-gallery">
@@ -214,19 +218,28 @@ function EvidenceViewer({ evidence, onClose }) {
     if (!evidence) return undefined
 
     const previousOverflow = document.body.style.overflow
+    const trigger = document.activeElement
     document.body.style.overflow = 'hidden'
     closeButton.current?.focus()
 
     const handleKeyDown = (event) => {
       if (event.key === 'Escape') onClose()
+      if (event.key === 'Tab') {
+        const controls = Array.from(closeButton.current.closest('.evidence-viewer-panel').querySelectorAll('button, a[href]'))
+        const first = controls[0]
+        const last = controls[controls.length - 1]
+        if (event.shiftKey && document.activeElement === first) { event.preventDefault(); last.focus() }
+        if (!event.shiftKey && document.activeElement === last) { event.preventDefault(); first.focus() }
+      }
     }
 
     window.addEventListener('keydown', handleKeyDown)
     return () => {
       document.body.style.overflow = previousOverflow
       window.removeEventListener('keydown', handleKeyDown)
+      trigger?.focus()
     }
-  }, [evidence, onClose])
+  }, [evidence])
 
   if (!evidence) return null
 
@@ -404,7 +417,7 @@ export default function PaidAds() {
 
               <Reveal delay={0.12}>
                 <div className="campaign-decision">
-                  <span>My next action</span>
+                  <span>Recommended next action</span>
                   <p>{campaign.decision}</p>
                 </div>
               </Reveal>
@@ -450,7 +463,7 @@ export default function PaidAds() {
                 <p>
                   I include the result that matches the campaign objective and keep the original
                   screenshot available. Failed and low-volume tests stay visible when they help
-                  explain what I changed next.
+                  explain what I would test next. Recommendations are analysis, not a claim that each follow-up was implemented. Leads and conversations are not verified sales.
                 </p>
                 <ol>
                   <li><strong>Creative:</strong> the actual ad people saw.</li>

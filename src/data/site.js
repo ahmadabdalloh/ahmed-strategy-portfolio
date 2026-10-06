@@ -3,13 +3,13 @@
 // ============================================================
 export const site = {
   name: 'Ahmed Abdallah',
-  role: 'Content & Growth Strategist',
-  positioning: 'Marketing Strategy · Content Systems · Media Planning',
+  role: 'Social Media & Content Specialist',
+  positioning: 'Content Strategy · Reel Production · Paid Social',
   valueProp:
-    'I turn research into clear strategy, content systems, and media plans that help brands earn attention and convert it into real business.',
+    'I plan content, write bilingual scripts, capture and edit Reels, and support Meta campaigns—with results and creative work you can review.',
   logo: '/logo.svg',
   credibility:
-    '13 client brands across legal, coffee, healthcare, education, fitness, jewelry & B2B · full-funnel work in Arabic and English',
+    'Based in Cairo · Arabic + English · Experience across education, healthcare, coffee, legal services, retail, and B2B',
   email: 'Ahmed.Abdallah.BU@gmail.com',
   phone: '01118871492',
   whatsapp: '201118871492', // international format for wa.me links
@@ -31,16 +31,14 @@ export const whatsappUrl = `https://wa.me/${site.whatsapp}?text=${encodeURICompo
 // Stat strip on the home page. These are scope-of-work facts pulled
 // from the actual deliverables (not performance claims).
 export const proofStats = [
-  { value: '13', label: 'client brands taken from research through execution' },
-  { value: '300+', label: 'post briefs written & art-directed' },
-  { value: 'EGP 115K+', label: 'monthly media budgets modeled' },
-  { value: '11', label: 'industries across strategy, paid work and production: legal, coffee, healthcare, physio, swim, early education, ed-tech, activewear, jewelry, B2B fit-out, automotive' },
-  { value: '90-day', label: 'roadmaps from research to scaling' },
-  { value: 'AR + EN', label: 'bilingual strategy & copywriting' },
+  { value: '146,883', label: 'Cloud9 content views · Instagram Insights · 60-day snapshot ending 5 Oct 2026' },
+  { value: '208', label: 'Cloud9 first-time messages · Facebook + Instagram · 3–22 Aug 2026' },
+  { value: '45', label: 'Genio Meta leads · EGP 8.56 per lead · 21 Jul 2026 snapshot' },
+  { value: '25', label: 'Cloud9 videos filmed · September production tracker snapshot' },
 ]
 
 // Homepage hierarchy: these three lead the work section as large cards.
-export const featuredSlugs = ['kavun-cafe', 'genio-academy', 'cloud9-nursery']
+export const featuredSlugs = ['cloud9-nursery', 'genio-academy', 'kavun-cafe']
 
 // Short-form video work embedded from Google Drive.
 export const reels = [
@@ -58,25 +56,25 @@ export const reels = [
 
 export const about = {
   bio: [
-    'I’m Ahmed Abdallah, a content and growth strategist working with brands in Egypt and the Gulf. I stay involved from research to execution. I build the market analysis, positioning, 30–90 day content calendar, media plan, and the measurement system behind it.',
-    'I work from one belief: attention is cheap, but trust takes work. Whether I’m helping a hospital fill clinic slots, launching an activewear brand, or qualifying B2B leads, I build the system to earn trust first and turn it into a clear next action.',
+    'I’m Ahmed Abdallah, a Cairo-based social media and content specialist. My work covers research, calendars, bilingual scripts, on-site filming, Reel editing, and performance reporting.',
+    'I combine hands-on production with marketing planning. The portfolio distinguishes published content and platform results from strategy deliverables, proposed budgets, and creative samples.',
   ],
   process: [
     {
-      step: 'Research',
-      text: 'Market sizing, competitor gaps, audience segments, and the one human truth behind the buying decision.',
+      step: 'Research & plan',
+      text: 'Identify the audience problem, review competitors, and build a calendar with a clear objective for each asset.',
     },
     {
-      step: 'Strategy',
-      text: 'Positioning, messaging rules, channel roles, budget allocation, and the KPI that actually matters.',
+      step: 'Script & capture',
+      text: 'Write the hook, script, shot list, and CTA; capture footage in focused production sessions.',
     },
     {
-      step: 'Content system',
-      text: 'A complete calendar where every post has a hook, caption, visual direction, tone of voice, objective, and CTA.',
+      step: 'Edit & coordinate',
+      text: 'Shape the edit, captions, sound, and format, then track review, approval, and publication.',
     },
     {
-      step: 'Test & scale',
-      text: 'Pilot budgets, decision rules, weekly reporting, and scaling only what proves qualified demand.',
+      step: 'Report & improve',
+      text: 'Review content and campaign results, document limitations, and use the findings in the next brief.',
     },
   ],
   skills: {
@@ -84,7 +82,7 @@ export const about = {
       'Market & competitor research',
       'Positioning & messaging systems',
       'Funnel design (awareness → booking)',
-      'Offer laddering & pricing communication',
+      'Offer and CTA planning',
       '90-day growth roadmaps',
     ],
     Content: [
@@ -92,18 +90,18 @@ export const about = {
       'Creative briefs & art direction',
       'Bilingual copywriting (AR/EN)',
       'Short-form video systems (Reels/TikTok)',
-      'UGC & community engines',
+      'On-site filming & batch production',
     ],
     'Media & Data': [
-      'Meta, TikTok, Google, YouTube planning',
-      'Budget modeling & KPI forecasting',
+      'Meta campaign setup & monitoring',
+      'Proposed budgets & KPI forecasts—not spend managed',
       'A/B testing frameworks',
       'CPM/CPC/CPL/CPR optimization',
-      'Lead qualification systems (WhatsApp)',
+      'WhatsApp enquiry-funnel planning',
     ],
     Tools: [
       'Meta Ads Manager',
-      'Google Ads',
+      'Meta Business Suite',
       'Excel / spreadsheet systems',
       'PowerPoint / deck design',
       'CapCut / video editing',

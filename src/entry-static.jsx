@@ -15,6 +15,8 @@ import Home from './pages/Home.jsx'
 import CaseStudy from './pages/CaseStudy.jsx'
 import PaidAds from './pages/PaidAds.jsx'
 import AIVideos from './pages/AIVideos.jsx'
+import AIDesigns from './pages/AIDesigns.jsx'
+import DigitalProducts from './pages/DigitalProducts.jsx'
 import NotFound from './pages/NotFound.jsx'
 
 function StaticApp() {
@@ -28,6 +30,8 @@ function StaticApp() {
           <Route path="/" element={<Home />} />
           <Route path="/paid-ads" element={<PaidAds />} />
           <Route path="/ai-videos" element={<AIVideos />} />
+          <Route path="/ai-designs" element={<AIDesigns />} />
+          <Route path="/digital-products" element={<DigitalProducts />} />
           <Route path="/work/:slug" element={<CaseStudy />} />
           <Route path="*" element={<NotFound />} />
         </Routes>

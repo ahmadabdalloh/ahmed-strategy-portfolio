@@ -13,7 +13,7 @@ export default function Marquee({ items }) {
     </div>
   )
   return (
-    <div className="marquee" role="group" aria-label={`Clients: ${items.join(', ')}`}>
+    <div className="marquee" role="group" aria-label={`Brands featured in the work: ${items.join(', ')}`}>
       <div className="marquee-track">{[0, 1].map(seq)}</div>
     </div>
   )
