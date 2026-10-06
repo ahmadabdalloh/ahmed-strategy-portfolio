@@ -6,6 +6,7 @@ const LINKS = [
   { to: '/#work', label: 'Work' },
   { to: '/paid-ads', label: 'Paid ads' },
   { to: '/ai-videos', label: 'AI videos' },
+  { to: '/digital-products', label: 'Web products' },
   { to: '/#reels', label: 'Reels' },
   { to: '/#about', label: 'About' },
 ]

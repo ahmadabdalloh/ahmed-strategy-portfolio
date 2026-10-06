@@ -395,7 +395,7 @@ export const projects = [
     lang: 'English + Arabic',
     title: 'Turning years of posting into a parent-growth system',
     summary:
-      'A research-led audit, 90-day distribution strategy, 30-day content system, and creative playbook built to turn consistent publishing into parent trust and qualified enrolment interest.',
+      'A research-led strategy, production system, organic content programme, and bilingual tour funnel that moved Cloud9 from consistent posting to measurable parent reach and enquiry generation.',
     cover: '/covers/cloud9-nursery-cover.webp',
     coverAlt:
       'Cloud9 Nursery strategy cover with the Cloud9 logo and the headline Social media is not the problem. Distribution is.',
@@ -407,14 +407,15 @@ export const projects = [
       '30 daily production briefs across six content pillars, five weeks, and three accounts',
       '26-page creative playbook for designers and editors',
       '85-script bank, publishing calendar, KPI framework, final social covers, and three reusable motion assets',
+      'Monthly organic-performance reporting, September and October production trackers, captured Reels, and a bilingual nursery tour funnel',
     ],
-    tools: ['Instagram', 'Facebook', 'TikTok', 'LinkedIn', 'Meta analytics', 'Excel', 'Creative direction', 'Video editing'],
+    tools: ['Instagram', 'Facebook', 'TikTok', 'LinkedIn', 'Meta Business Suite', 'Excel', 'Creative direction', 'Video editing', 'React', 'Microsoft Forms'],
     stats: [
-      { value: '1,783', label: 'published Instagram posts reviewed to diagnose the distribution problem' },
-      { value: '0.9%', label: 'of the Facebook audience active in the measured week at the starting point' },
-      { value: '30 days', label: 'of daily briefs built for six pillars, five weeks, and three accounts' },
-      { value: '85', label: 'scripts prepared so the team could move from planning into production' },
-      { value: '14 / week', label: 'planned output produced in two focused batch-shooting sessions' },
+      { value: '146,883', label: 'Instagram views in the 60-day reporting window ending 5 Oct 2026' },
+      { value: '+238', label: 'net followers added from 3–22 Aug with EGP 0 spent on ads' },
+      { value: '208', label: 'first-time parent messages in the August reporting window' },
+      { value: '56', label: 'September assets tracked: 39 videos and 17 feed or carousel designs' },
+      { value: '35', label: 'October video briefs planned across 11 content categories' },
     ],
     sections: [
       {
@@ -493,6 +494,83 @@ export const projects = [
         ],
       },
       {
+        id: 'organic-results',
+        heading: 'The organic system produced measurable growth',
+        body: 'I separated every result by reporting window so the case study stays honest. From 3–22 August, Cloud9 reached about 15,700 people, added 238 net followers, earned 1,354 interactions, and generated 208 first-time parent messages with no ad spend. The 60-day Instagram view ending 5 October recorded 146,883 views, +200 net followers, and 1,786 interactions. The screenshots below remain available as the original proof, while the August report turns the numbers into decisions rather than decoration.',
+        quote: {
+          text: 'The content has done its job. If we fix the inbox, those conversations can turn into visits.',
+          source: 'August 2026 performance report and recommendation',
+        },
+        metrics: [
+          { value: '15.7K', label: 'people reached', note: '3–22 Aug · Meta Business Suite' },
+          { value: '+238', label: 'net followers', note: '269 joined · 31 left' },
+          { value: '1,354', label: 'interactions', note: 'likes, comments, and shares' },
+          { value: '208', label: 'first-time messages', note: '168 Facebook · 40 Instagram' },
+          { value: 'EGP 0', label: 'ad spend', note: 'organic result' },
+        ],
+        images: [
+          { src: '/work/cloud9/organic/report-cover.webp', alt: 'Cloud9 August 2026 organic social report cover showing total followers, follower growth, reach, messages, and zero ad spend', caption: 'August report cover: every headline number is tied to a named Meta reporting window.' },
+          { src: '/work/cloud9/organic/instagram-60-day-results.webp', alt: 'Instagram Insights showing 146,883 views, 200 net followers, and 1,786 interactions over 60 days', caption: '60-day Instagram view ending 5 October: 146,883 views, +200 net followers, and 1,786 interactions.' },
+          { src: '/work/cloud9/organic/facebook-august-results.webp', alt: 'Meta Business Suite Facebook content overview showing 85,740 views and 83,034 organic views during August', caption: 'Facebook, 4–31 August: 85.7K views, 83,034 of them organic, with interactions up 180.2%.' },
+          { src: '/work/cloud9/organic/instagram-august-results.webp', alt: 'Meta Business Suite Instagram content overview showing growth in views, reach, and content interactions during August', caption: 'Instagram, 4–31 August: 42,840 organic platform views, with reach and interactions sharply higher than the previous period.' },
+          { src: '/work/cloud9/organic/weekly-output-results.webp', alt: 'Meta weekly review showing 43 pieces of content published, 3,000 Facebook reach, 1,300 Instagram reach, and 69 new contacts', caption: 'A sampled week, 9–15 August: 43 content pieces and 69 new contacts across the two platforms.' },
+          { src: '/work/cloud9/organic/recommendations.webp', alt: 'Cloud9 August report page listing five prioritised recommendations for September', caption: 'Reporting closes with priorities: inbox ownership, Instagram-first creative, a distinct role for Facebook, one application route, and fewer stronger pieces.' },
+        ],
+      },
+      {
+        id: 'production-operations',
+        heading: 'Planning continued all the way through filming, editing, approval, and publication',
+        body: 'The calendar is not a list of post ideas. Each asset has a category, title, brief, owner, filming state, edit state, approval state, publication state, blocker, result field, and live link. September tracked 39 videos and 17 feed or carousel designs; 25 videos had been filmed and 19 published at the snapshot used here. October opened with 35 video briefs across emotional storytelling, activities, child psychology, team content, social proof, education, transformation stories, and conversion. Sensitive child content carries a consent or specialist-review note before production.',
+        metrics: [
+          { value: '39', label: 'September video briefs', note: '11 content categories' },
+          { value: '25', label: 'videos filmed', note: 'September tracker snapshot' },
+          { value: '19', label: 'videos published', note: 'each linked back to the live Reel' },
+          { value: '17', label: 'design briefs', note: 'carousels and feed posts' },
+          { value: '35', label: 'October video briefs', note: 'planned before production began' },
+        ],
+        workflow: [
+          { title: 'Plan the angle', body: 'Choose the pillar, audience problem, hook, proof, CTA, and required consent.' },
+          { title: 'Capture in batches', body: 'Film educator-led explanations, activities, emotional moments, and social proof against the tracker.' },
+          { title: 'Edit for mobile', body: 'Use the Cloud9 motion kit, sound-off subtitles, clear opening frames, and one visual idea per scene.' },
+          { title: 'Review and publish', body: 'Secure approval, record blockers, publish, add the live link, and return performance to the tracker.' },
+        ],
+        tracker: {
+          title: 'September content production system',
+          note: 'Sanitised portfolio excerpt · live workbook contains owners and operational notes',
+          columns: ['Asset', 'Category', 'Filming', 'Editing', 'Approval', 'Publication'],
+          rows: [
+            ['Why We Do Not Teach Letters in Alphabetical Order', 'Opinion', 'Filmed', 'Edited', 'Approved', 'Published'],
+            ['Why Cloud9 Does Not Use Screens', 'Educational', 'Filmed', 'In progress', 'Approved', 'Published'],
+            ['Graduation Behind the Scenes', 'BTS', 'Filmed', 'Edited', 'Approved', 'Published'],
+            ['Why Does My Child Lie?', 'Child psychology', 'Filmed', 'In progress', 'Approved', 'Published'],
+            ['Cloud9 Nursery', 'Conversion', 'Filmed', 'Edited', 'Approved', 'Published'],
+          ],
+        },
+        links: [
+          { label: 'View the scripting document', href: 'https://buc1-my.sharepoint.com/:w:/g/personal/gana_2024000179_buc_edu_eg/IQCiBooSIRxaSJg2cnxFcIcPAd-ETmndb5ykpTXIFNZsx6E?e=IO9fPN' },
+          { label: 'View the working content calendar', href: 'https://buc1-my.sharepoint.com/:x:/g/personal/gana_2024000179_buc_edu_eg/IQC_9T_cdkALRqgTCdqSO7QKAbrshzLPPe_6eUYJ7VnEIiE?e=Zhpoc5' },
+        ],
+        images: [],
+      },
+      {
+        id: 'captured-reels',
+        heading: 'I also captured and shaped the short-form content',
+        body: 'These are representative pieces from the published production folder: educator-led insight, behind-the-scenes footage, classroom and learning moments, rehearsals, and graduation storytelling. The work spans planning, on-site capture, direction, edit structure, and social delivery—not only the written calendar. Click any card to play the original Drive preview.',
+        link: {
+          label: 'Open the complete published Reel folder',
+          href: 'https://drive.google.com/drive/folders/1GAta4iDrXUNaGw0UxjrrtP8qpdX5Q16c?usp=drive_link',
+        },
+        images: [],
+        embeds: [
+          { id: '1Mqhe_Q_jIwWdnvA4XaXByzSbO6nNEnQx', title: 'Behind the scenes', caption: 'A process-led Reel from the published content folder.' },
+          { id: '1TCXqjJsMpuZrfGYm6L1DckNWjfBx7kHv', title: 'Educator-led insight', caption: 'Direct-to-camera expertise captured inside the nursery environment.' },
+          { id: '1gfJ24fRRUEt7dqAFcN6sQ6M7k1VCGCrj', title: 'Learning moment', caption: 'A focused classroom story edited for vertical social viewing.' },
+          { id: '1irhcPTFQqBRyjYmZuO2Hka_IHTPRCqEa', title: 'Graduation rehearsal', caption: 'Behind-the-scenes preparation turned into an emotional story.' },
+          { id: '1kRTZcSiuZgayuPJre8UOcKQ-wra0cidX', title: 'Activity-led learning', caption: 'A real child-led activity shaped into a concise social format.' },
+          { id: '1rwEWrtrsTwNw1jcG6NEGTkORxqk17HCB', title: 'Graduation highlight', caption: 'A celebration moment captured and packaged for the feed.' },
+        ],
+      },
+      {
         heading: 'A creative playbook the production team can actually use',
         body: 'The playbook gives designers and editors the rules behind the look, not just a mood board. It covers colour, type, logo placement, brand charms, ten design treatments, eight edit styles, subtitle behaviour, file naming, delivery specs, and the path from brief to publish. Two safeguards sit above the craft: written parental consent before filming and educator review for development claims. References guide composition, but they never become fake proof.',
         quote: {
@@ -522,17 +600,37 @@ export const projects = [
       },
       {
         heading: 'A small motion kit keeps every Reel recognisable',
-        body: 'The motion package gives editors three reusable building blocks: an eight-second nursery intro, a cloud wipe for scene changes, and a branded end card. Together they create a consistent opening, transition, and close without making every Reel feel identical. The cloud wipe is supplied on chroma green so editors can key it over live footage.',
+        body: 'The motion package gives editors reusable vertical and widescreen building blocks: a nursery intro, cloud wipes and swipes for scene changes, and branded end cards. Together they create a consistent opening, transition, and close without making every Reel or presentation feel identical.',
         images: [],
         videos: [
           { src: '/work/cloud9/nursery-intro.mp4', poster: '/work/cloud9/nursery-intro-poster.webp', alt: 'Cloud9 nursery intro animation with clouds, balloons, learning blocks, rainbow, and the nursery logo', caption: 'Nursery intro: an eight-second branded opening built for vertical Reels.' },
           { src: '/work/cloud9/cloud-wipe-transition.mp4', poster: '/work/cloud9/cloud-wipe-poster.webp', alt: 'Cloud9 cloud-shaped chroma-key wipe transition for video editors', caption: 'Cloud wipe: a short chroma-key transition designed to sit over live footage.' },
           { src: '/work/cloud9/ending-video.mp4', poster: '/work/cloud9/ending-video-poster.webp', alt: 'Cloud9 branded end-card animation with the logo, rainbow, contact details, and Learn Play Grow message', caption: 'End card: a consistent branded close with the account and contact route.' },
+          { src: '/work/cloud9/cloud-wipe-16x9.mp4', poster: '/work/cloud9/cloud-wipe-16x9-poster.webp', alt: 'Widescreen Cloud9 cloud wipe transition', caption: '16:9 cloud wipe: a presentation and landscape-video transition.' },
+          { src: '/work/cloud9/cloud-swipe-16x9.mp4', poster: '/work/cloud9/cloud-swipe-16x9-poster.webp', alt: 'Widescreen Cloud9 cloud swipe transition', caption: '16:9 cloud swipe: a second transition route for visual variety.' },
+          { src: '/work/cloud9/graduation-outro-16x9.mp4', poster: '/work/cloud9/graduation-outro-16x9-poster.webp', alt: 'Widescreen Cloud9 graduation outro animation', caption: 'Graduation outro: a widescreen branded close for event footage.' },
+        ],
+      },
+      {
+        id: 'tour-funnel',
+        heading: 'The content now has a clear next step: book a nursery tour',
+        body: 'The bilingual tour site closes the gap identified in the August report. Parents see a simple three-step journey, choose English or Arabic, and complete a secure Microsoft form without leaving the branded experience. Responses move into an Excel tracker for tour status and client conversion, while branch phone numbers remain visible for families who prefer to call. Personal response data is deliberately excluded from this public portfolio.',
+        metrics: [
+          { value: 'AR + EN', label: 'bilingual experience', note: 'one interface for both audiences' },
+          { value: '3 steps', label: 'clear parent journey', note: 'request · call · visit' },
+          { value: '1 form', label: 'structured lead capture', note: 'secure Microsoft Forms handoff' },
+        ],
+        link: {
+          label: 'Open the live Cloud9 tour booking site',
+          href: 'https://cloud9-tour-booking.vercel.app/',
+        },
+        images: [
+          { src: '/work/digital-products/cloud9-tour-booking.webp', alt: 'Cloud9 bilingual nursery tour booking website with parent-focused hero and three-step journey', caption: 'A parent-facing booking experience that connects organic content to a measurable tour-request workflow.' },
         ],
       },
     ],
     outcome:
-      'I built Cloud9 a complete social system from diagnosis through handoff: a 48-page audit, a 90-day distribution plan, a 30-day daily-brief system, an 85-script bank, production rules for design and edit teams, finished cover designs, and three reusable motion assets. The work is ready to measure against non-follower reach, saves, shares, profile actions, and qualified enrolment enquiries. I am not presenting strategic targets as live campaign results.',
+      'Cloud9 now has a connected growth system: research and positioning, a 30-day content architecture, an 85-script bank, production trackers, on-site Reel capture, repeatable motion assets, monthly organic reporting, and a live bilingual tour funnel. The work generated verified organic reach, follower growth, interactions, and parent conversations with zero August ad spend, while the booking product gives that attention a measurable next action.',
   },
 
   // ----------------------------------------------------------

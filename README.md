@@ -10,6 +10,8 @@ A web portfolio presenting my work across marketing strategy, content systems, m
 - Strategy decks and content calendars rebuilt for quick online reading
 - Paid ads evidence with campaign results and next-action commentary
 - AI-generated legal video showcase created with Higgsfield
+- Three live digital products across education, logistics, and healthcare
+- Cloud9 organic-growth evidence, production trackers, captured Reels, and a bilingual tour funnel
 - Original campaign visuals, reels, research findings, and planning frameworks
 - Responsive layouts, accessible navigation, restrained motion, and optimized media
 

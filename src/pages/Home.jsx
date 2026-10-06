@@ -299,6 +299,35 @@ export default function Home() {
         </div>
       </section>
 
+      {/* ---------- DIGITAL PRODUCTS ---------- */}
+      <section className="section digital-home-section" aria-labelledby="digital-home-title">
+        <div className="wrap">
+          <Reveal>
+            <Link className="digital-home-card" to="/digital-products">
+              <div className="digital-home-copy">
+                <p className="eyebrow">Live web products</p>
+                <h2 id="digital-home-title">From campaign attention to a working digital journey.</h2>
+                <p>
+                  Explore three products I built across nursery admissions, international
+                  freight, and hospital attendance—designed around the real next action.
+                </p>
+                <div className="digital-home-facts" aria-label="Digital product portfolio details">
+                  <span><strong>3</strong> live products</span>
+                  <span><strong>2</strong> bilingual</span>
+                  <span><strong>3</strong> sectors</span>
+                </div>
+                <span className="digital-home-link">Explore the web products <span aria-hidden="true">→</span></span>
+              </div>
+              <div className="digital-home-media" aria-hidden="true">
+                <img className="digital-home-shot digital-home-shot-main" src="/work/digital-products/cloud9-tour-booking.webp" alt="" width="1440" height="1000" loading="lazy" />
+                <img className="digital-home-shot digital-home-shot-back" src="/work/digital-products/inter-freight-cargo.webp" alt="" width="1440" height="1000" loading="lazy" />
+                <span className="digital-home-badge">Designed + built</span>
+              </div>
+            </Link>
+          </Reveal>
+        </div>
+      </section>
+
       {/* ---------- REELS ---------- */}
       <section className="section" id="reels" aria-labelledby="reels-title" style={{ paddingTop: 0 }}>
         <div className="wrap">

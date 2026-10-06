@@ -12,6 +12,7 @@ import Seo from './components/Seo.jsx'
 const CaseStudy = lazy(() => import('./pages/CaseStudy.jsx'))
 const PaidAds = lazy(() => import('./pages/PaidAds.jsx'))
 const AIVideos = lazy(() => import('./pages/AIVideos.jsx'))
+const DigitalProducts = lazy(() => import('./pages/DigitalProducts.jsx'))
 const NotFound = lazy(() => import('./pages/NotFound.jsx'))
 
 function ScrollManager() {
@@ -45,6 +46,7 @@ export default function App() {
             <Route path="/" element={<Home />} />
             <Route path="/paid-ads" element={<PaidAds />} />
             <Route path="/ai-videos" element={<AIVideos />} />
+            <Route path="/digital-products" element={<DigitalProducts />} />
             <Route path="/work/:slug" element={<CaseStudy />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

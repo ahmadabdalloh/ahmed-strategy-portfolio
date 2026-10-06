@@ -1,5 +1,5 @@
 import { useParams, Link, useLocation } from 'react-router-dom'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 import { motion, useReducedMotion } from 'framer-motion'
 import Reveal from '../components/Reveal.jsx'
 import ScrollProgress from '../components/ScrollProgress.jsx'
@@ -91,6 +91,86 @@ function VideoFigure({ video }) {
   )
 }
 
+function DriveEmbed({ embed }) {
+  const [playing, setPlaying] = useState(false)
+  return (
+    <article className={`drive-proof${playing ? ' is-playing' : ''}`}>
+      <div className="drive-proof-media">
+        {playing ? (
+          <iframe
+            src={`https://drive.google.com/file/d/${embed.id}/preview`}
+            title={embed.title}
+            allow="autoplay; fullscreen"
+            allowFullScreen
+            loading="lazy"
+          />
+        ) : (
+          <button type="button" onClick={() => setPlaying(true)} aria-label={`Play ${embed.title}`}>
+            <span className="drive-proof-index">{embed.index}</span>
+            <span className="drive-proof-play" aria-hidden="true">▶</span>
+            <span className="drive-proof-format">Captured + edited for social</span>
+          </button>
+        )}
+      </div>
+      <div className="drive-proof-copy">
+        <strong>{embed.title}</strong>
+        <span>{embed.caption}</span>
+        <a href={`https://drive.google.com/file/d/${embed.id}/view`} target="_blank" rel="noopener noreferrer">
+          Open on Drive <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+    </article>
+  )
+}
+
+function SectionMetrics({ metrics }) {
+  return (
+    <div className="case-metric-grid" aria-label="Verified results">
+      {metrics.map((metric) => (
+        <div key={metric.label}>
+          <strong>{metric.value}</strong>
+          <span>{metric.label}</span>
+          {metric.note && <small>{metric.note}</small>}
+        </div>
+      ))}
+    </div>
+  )
+}
+
+function Workflow({ steps }) {
+  return (
+    <ol className="case-workflow">
+      {steps.map((step, index) => (
+        <li key={step.title}>
+          <span>{String(index + 1).padStart(2, '0')}</span>
+          <div><strong>{step.title}</strong><p>{step.body}</p></div>
+        </li>
+      ))}
+    </ol>
+  )
+}
+
+function TrackerTable({ tracker }) {
+  return (
+    <div className="case-tracker">
+      <div className="case-tracker-head">
+        <div><span>Production tracker excerpt</span><strong>{tracker.title}</strong></div>
+        <small>{tracker.note}</small>
+      </div>
+      <div className="case-tracker-scroll">
+        <table>
+          <thead><tr>{tracker.columns.map((column) => <th key={column}>{column}</th>)}</tr></thead>
+          <tbody>
+            {tracker.rows.map((row) => (
+              <tr key={row[0]}>{row.map((cell, index) => <td key={`${row[0]}-${index}`}>{cell}</td>)}</tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  )
+}
+
 export default function CaseStudy() {
   const { slug } = useParams()
   const { hash } = useLocation()
@@ -166,11 +246,12 @@ export default function CaseStudy() {
       {pr.sections.map((sec) => {
         const videos = sec.videos ?? []
         const mediaCount = sec.images.length + videos.length
+        const hasSupplemental = mediaCount > 0 || sec.metrics?.length || sec.workflow?.length || sec.tracker || sec.embeds?.length
         return (
         <section className="cs-section" id={sec.id} key={sec.heading}>
           <div className="wrap">
             <Reveal>
-              <div className={`body-grid ${mediaCount === 0 ? 'solo' : ''}`}>
+              <div className={`body-grid ${hasSupplemental ? '' : 'solo'}`}>
                 <h2>{sec.heading}</h2>
                 <div>
                   <p className="body">{sec.body}</p>
@@ -191,9 +272,21 @@ export default function CaseStudy() {
                       <ExternalArrow />
                     </a>
                   )}
+                  {sec.links?.length > 0 && (
+                    <div className="cs-resource-links">
+                      {sec.links.map((link) => (
+                        <a key={link.href} href={link.href} target="_blank" rel="noopener noreferrer">
+                          {link.label}<ExternalArrow />
+                        </a>
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </Reveal>
+            {sec.metrics?.length > 0 && <Reveal><SectionMetrics metrics={sec.metrics} /></Reveal>}
+            {sec.workflow?.length > 0 && <Reveal><Workflow steps={sec.workflow} /></Reveal>}
+            {sec.tracker && <Reveal><TrackerTable tracker={sec.tracker} /></Reveal>}
             {mediaCount > 0 && (
               <div className="fig-grid">
                 {sec.images.map((img, i) => (
@@ -204,6 +297,15 @@ export default function CaseStudy() {
                 {videos.map((video, i) => (
                   <Reveal key={video.src + i} delay={((sec.images.length + i) % 2) * 0.07}>
                     <VideoFigure video={video} />
+                  </Reveal>
+                ))}
+              </div>
+            )}
+            {sec.embeds?.length > 0 && (
+              <div className="drive-proof-grid">
+                {sec.embeds.map((embed, index) => (
+                  <Reveal key={embed.id} delay={(index % 2) * 0.06}>
+                    <DriveEmbed embed={{ ...embed, index: String(index + 1).padStart(2, '0') }} />
                   </Reveal>
                 ))}
               </div>

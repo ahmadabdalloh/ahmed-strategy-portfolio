@@ -11,6 +11,7 @@ export const routes = [
   '/',
   '/paid-ads',
   '/ai-videos',
+  '/digital-products',
   ...projects.map((p) => `/work/${p.slug}`),
 ]
 
@@ -38,6 +39,14 @@ const AI_VIDEOS = {
   type: 'website',
 }
 
+const DIGITAL_PRODUCTS = {
+  title: `Digital products — ${site.name}`,
+  description:
+    'Three live web products built for real workflows: a bilingual nursery tour funnel, a bilingual freight website, and a QR-first hospital attendance system.',
+  image: '/work/digital-products/cloud9-tour-booking.webp',
+  type: 'website',
+}
+
 const NOT_FOUND = {
   title: `Page not found — ${site.name}`,
   description: 'That page does not exist. Browse the case studies instead.',
@@ -52,6 +61,7 @@ export function metaForPath(pathname = '/') {
   if (path === '/') return { ...HOME, canonical: site.url + '/' }
   if (path === '/paid-ads') return { ...PAID, canonical: `${site.url}/paid-ads` }
   if (path === '/ai-videos') return { ...AI_VIDEOS, canonical: `${site.url}/ai-videos` }
+  if (path === '/digital-products') return { ...DIGITAL_PRODUCTS, canonical: `${site.url}/digital-products` }
 
   const match = path.match(/^\/work\/([^/]+)$/)
   if (match) {
